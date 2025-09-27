@@ -6,19 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Play, Grid, ArrowRight, Zap, Target, TrendingUp, Users } from "lucide-react";
 import heroImage from "@/assets/hero-challenges.jpg";
-
 const Index = () => {
   const [viewMode, setViewMode] = useState<"video" | "grid" | "landing">("landing");
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
-
   const handleUserProfile = (userId: string) => {
     setSelectedUserId(userId);
   };
 
   // Landing page view
   if (viewMode === "landing") {
-    return (
-      <div className="min-h-screen bg-background">
+    return <div className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
@@ -28,7 +25,7 @@ const Index = () => {
                 <div className="space-y-4">
                   <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                     Turn Scrolling Into{" "}
-                    <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-7xl">
                       Growing
                     </span>
                   </h1>
@@ -38,11 +35,7 @@ const Index = () => {
                 </div>
                 
                 <div className="flex items-center gap-4">
-                  <Button 
-                    onClick={() => setViewMode("video")}
-                    size="lg"
-                    className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
-                  >
+                  <Button onClick={() => setViewMode("video")} size="lg" className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
                     Start Your Journey
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
@@ -70,11 +63,7 @@ const Index = () => {
               
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-3xl" />
-                <img 
-                  src={heroImage} 
-                  alt="People doing productive activities"
-                  className="relative rounded-3xl shadow-2xl w-full"
-                />
+                <img src={heroImage} alt="People doing productive activities" className="relative rounded-3xl shadow-2xl w-full" />
               </div>
             </div>
           </div>
@@ -146,11 +135,7 @@ const Index = () => {
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Join the movement of people choosing growth over passive consumption. Your future self will thank you.
               </p>
-              <Button 
-                onClick={() => setViewMode("video")}
-                size="lg"
-                className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
-              >
+              <Button onClick={() => setViewMode("video")} size="lg" className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
                 Start Your First Challenge
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -161,57 +146,29 @@ const Index = () => {
             </Card>
           </div>
         </section>
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="relative">
+  return <div className="relative">
       {/* View Toggle */}
       <div className="fixed top-4 left-4 z-20 flex gap-2">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => setViewMode("landing")}
-          className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50"
-        >
+        <Button variant="outline" size="sm" onClick={() => setViewMode("landing")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
           Home
         </Button>
-        <Button
-          variant={viewMode === "video" ? "default" : "outline"}
-          size="sm"
-          onClick={() => setViewMode("video")}
-          className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50"
-        >
+        <Button variant={viewMode === "video" ? "default" : "outline"} size="sm" onClick={() => setViewMode("video")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
           <Play className="w-4 h-4 mr-1" />
           Video
         </Button>
-        <Button
-          variant={viewMode === "grid" ? "default" : "outline"}
-          size="sm"
-          onClick={() => setViewMode("grid")}
-          className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50"
-        >
+        <Button variant={viewMode === "grid" ? "default" : "outline"} size="sm" onClick={() => setViewMode("grid")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
           <Grid className="w-4 h-4 mr-1" />
           Grid
         </Button>
       </div>
 
       {/* Content */}
-      {viewMode === "video" ? (
-        <VideoChallengeFeed onUserProfile={handleUserProfile} />
-      ) : (
-        <ChallengeFeed />
-      )}
+      {viewMode === "video" ? <VideoChallengeFeed onUserProfile={handleUserProfile} /> : <ChallengeFeed />}
 
       {/* User Profile Modal */}
-      <UserProfileModal
-        userId={selectedUserId}
-        isOpen={!!selectedUserId}
-        onClose={() => setSelectedUserId(null)}
-      />
-    </div>
-  );
+      <UserProfileModal userId={selectedUserId} isOpen={!!selectedUserId} onClose={() => setSelectedUserId(null)} />
+    </div>;
 };
-
 export default Index;
