@@ -1,0 +1,227 @@
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Trophy, Flame, Award, Clock, Target, TrendingUp } from "lucide-react";
+
+interface Badge {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  earned: boolean;
+  earnedDate?: string;
+}
+
+interface ActiveChallenge {
+  id: string;
+  title: string;
+  daysCompleted: number;
+  totalDays: number;
+  category: string;
+}
+
+const AccountPage = () => {
+  const [userStats] = useState({
+    impactScore: 1240,
+    growthScore: 890,
+    totalChallenges: 12,
+    completedChallenges: 8,
+    currentStreak: 7,
+  });
+
+  const [badges] = useState<Badge[]>([
+    {
+      id: "1",
+      name: "First Steps",
+      description: "Completed your first challenge",
+      icon: "🎯",
+      earned: true,
+      earnedDate: "2024-01-15",
+    },
+    {
+      id: "2",
+      name: "Week Warrior",
+      description: "Maintained a 7-day streak",
+      icon: "🔥",
+      earned: true,
+      earnedDate: "2024-01-22",
+    },
+    {
+      id: "3",
+      name: "Social Butterfly",
+      description: "Joined 10 community challenges",
+      icon: "🦋",
+      earned: true,
+      earnedDate: "2024-02-05",
+    },
+    {
+      id: "4",
+      name: "Consistency King",
+      description: "Complete a 30-day challenge",
+      icon: "👑",
+      earned: false,
+    },
+    {
+      id: "5",
+      name: "Impact Master",
+      description: "Reach 2000 Impact points",
+      icon: "⚡",
+      earned: false,
+    },
+    {
+      id: "6",
+      name: "Growth Guru",
+      description: "Reach 2000 Growth points",
+      icon: "🌱",
+      earned: false,
+    },
+  ]);
+
+  const [activeChallenges] = useState<ActiveChallenge[]>([
+    {
+      id: "1",
+      title: "30-Day Morning Yoga Journey",
+      daysCompleted: 7,
+      totalDays: 30,
+      category: "Fitness & Health",
+    },
+    {
+      id: "2",
+      title: "7-Day Meditation Streak",
+      daysCompleted: 4,
+      totalDays: 7,
+      category: "Mindfulness & Wellness",
+    },
+  ]);
+
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-8">
+        {/* Profile Header */}
+        <Card className="p-6 mb-8">
+          <div className="flex items-start gap-6">
+            <Avatar className="w-24 h-24">
+              <AvatarImage src="/api/placeholder/100/100" />
+              <AvatarFallback>YO</AvatarFallback>
+            </Avatar>
+            
+            <div className="flex-1">
+              <h1 className="text-3xl font-bold mb-2">Your Progress</h1>
+              <p className="text-muted-foreground mb-4">
+                Keep up the great work! You're on a {userStats.currentStreak}-day streak 🔥
+              </p>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="text-center">
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <Trophy className="w-4 h-4 text-primary" />
+                    <span className="text-2xl font-bold text-primary">{userStats.impactScore}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Impact Score</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <Flame className="w-4 h-4 text-secondary" />
+                    <span className="text-2xl font-bold text-secondary">{userStats.growthScore}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Growth Score</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <Target className="w-4 h-4 text-success" />
+                    <span className="text-2xl font-bold text-success">{userStats.completedChallenges}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Completed</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <TrendingUp className="w-4 h-4 text-accent" />
+                    <span className="text-2xl font-bold text-accent">{userStats.currentStreak}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">Day Streak</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Active Challenges */}
+          <div>
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+              <Clock className="w-6 h-6 text-primary" />
+              Active Challenges
+            </h2>
+            
+            <div className="space-y-4">
+              {activeChallenges.map((challenge) => (
+                <Card key={challenge.id} className="p-4">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <h3 className="font-semibold mb-1">{challenge.title}</h3>
+                      <Badge variant="secondary" className="text-xs">
+                        {challenge.category}
+                      </Badge>
+                    </div>
+                    <span className="text-sm text-muted-foreground">
+                      {challenge.daysCompleted}/{challenge.totalDays} days
+                    </span>
+                  </div>
+                  
+                  <Progress 
+                    value={(challenge.daysCompleted / challenge.totalDays) * 100} 
+                    className="h-2"
+                  />
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Milestone Badges */}
+          <div>
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+              <Award className="w-6 h-6 text-secondary" />
+              Milestone Badges
+            </h2>
+            
+            <div className="grid grid-cols-2 gap-4">
+              {badges.map((badge) => (
+                <Card 
+                  key={badge.id} 
+                  className={`p-4 text-center transition-all ${
+                    badge.earned 
+                      ? "bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/20" 
+                      : "opacity-50 grayscale"
+                  }`}
+                >
+                  <div className="text-4xl mb-2">{badge.icon}</div>
+                  <h3 className="font-semibold text-sm mb-1">{badge.name}</h3>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    {badge.description}
+                  </p>
+                  {badge.earned && badge.earnedDate && (
+                    <Badge variant="secondary" className="text-xs">
+                      Earned {new Date(badge.earnedDate).toLocaleDateString()}
+                    </Badge>
+                  )}
+                  {!badge.earned && (
+                    <Badge variant="outline" className="text-xs">
+                      Locked
+                    </Badge>
+                  )}
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AccountPage;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ChallengeCard from "./ChallengeCard";
 import CreateChallengeModal from "./CreateChallengeModal";
+import PersonalChallengeSection from "./PersonalChallengeSection";
 import ScoreDisplay from "./ScoreDisplay";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
@@ -136,6 +137,9 @@ const ChallengeFeed = () => {
 
       {/* Challenge Feed */}
       <div className="container mx-auto px-4 py-6">
+        {/* Personal Challenge Section */}
+        <PersonalChallengeSection />
+        
         <div className="space-y-6">
           {challenges.map((challenge) => (
             <ChallengeCard

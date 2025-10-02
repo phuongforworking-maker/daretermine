@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ChallengeFeed from "@/components/ChallengeFeed";
 import VideoChallengeFeed from "@/components/VideoChallengeFeed";
 import UserProfileModal from "@/components/UserProfileModal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Play, Grid, ArrowRight, Zap, Target, TrendingUp, Users } from "lucide-react";
+import { Play, Grid, ArrowRight, Zap, Target, TrendingUp, Users, User } from "lucide-react";
 import heroImage from "@/assets/hero-challenges.jpg";
 const Index = () => {
+  const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<"video" | "grid" | "landing">("landing");
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const handleUserProfile = (userId: string) => {
@@ -148,7 +150,7 @@ const Index = () => {
       {/* View Toggle */}
       <div className="fixed top-4 left-4 z-20 flex gap-2">
         <Button variant="outline" size="sm" onClick={() => setViewMode("landing")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
-          Home
+          About
         </Button>
         <Button variant={viewMode === "video" ? "default" : "outline"} size="sm" onClick={() => setViewMode("video")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
           <Play className="w-4 h-4 mr-1" />
@@ -157,6 +159,10 @@ const Index = () => {
         <Button variant={viewMode === "grid" ? "default" : "outline"} size="sm" onClick={() => setViewMode("grid")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
           <Grid className="w-4 h-4 mr-1" />
           Grid
+        </Button>
+        <Button variant="outline" size="sm" onClick={() => navigate("/account")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
+          <User className="w-4 h-4 mr-1" />
+          Account
         </Button>
       </div>
 
