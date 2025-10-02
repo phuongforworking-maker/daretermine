@@ -34,7 +34,7 @@ const Index = () => {
                 
                 <div className="flex items-center gap-4">
                   <Button onClick={() => setViewMode("video")} size="lg" className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
-                    Start Your Journey
+                    Start Your Journey Here
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                   <Button variant="outline" size="lg">
