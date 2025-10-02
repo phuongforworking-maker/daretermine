@@ -29,9 +29,7 @@ const Index = () => {
                       Growing
                     </span>
                   </h1>
-                  <p className="text-xl text-muted-foreground leading-relaxed">
-                    Stop endless scrolling. Start meaningful challenges. Join thousands building better habits through gamified productivity.
-                  </p>
+                  <p className="text-xl text-muted-foreground leading-relaxed">Stop endless scrolling and start meaningful challenges now. Join thousands to build better habits and improve Self Growth. Using two metrics system, you can generate </p>
                 </div>
                 
                 <div className="flex items-center gap-4">
