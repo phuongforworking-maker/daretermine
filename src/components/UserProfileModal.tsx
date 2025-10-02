@@ -20,6 +20,8 @@ import {
   Target,
   Zap
 } from "lucide-react";
+import yogaChallengeImg from "@/assets/yoga-challenge.jpg";
+import meditationChallengeImg from "@/assets/meditation-challenge.jpg";
 
 interface UserProfile {
   id: string;
@@ -112,7 +114,7 @@ const sampleUser: UserProfile = {
     {
       id: "1",
       title: "30-Day Morning Yoga",
-      thumbnail: "/api/placeholder/200/300",
+      thumbnail: yogaChallengeImg,
       likes: 2841,
       isCompleted: false,
       progress: 73,
@@ -120,7 +122,7 @@ const sampleUser: UserProfile = {
     {
       id: "2", 
       title: "Mindful Meditation Week",
-      thumbnail: "/api/placeholder/200/300",
+      thumbnail: meditationChallengeImg,
       likes: 1205,
       isCompleted: true,
       progress: 100,
