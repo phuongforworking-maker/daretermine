@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Trophy, Flame, Award, Clock, Target, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Trophy, Flame, Award, Clock, Target, TrendingUp, ArrowLeft } from "lucide-react";
 
 interface Badge {
   id: string;
@@ -23,6 +25,7 @@ interface ActiveChallenge {
 }
 
 const AccountPage = () => {
+  const navigate = useNavigate();
   const [userStats] = useState({
     impactScore: 1240,
     growthScore: 890,
@@ -99,6 +102,16 @@ const AccountPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
+        {/* Back Button */}
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => navigate(-1)}
+          className="mb-4"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back
+        </Button>
         {/* Profile Header */}
         <Card className="p-6 mb-8">
           <div className="flex items-start gap-6">

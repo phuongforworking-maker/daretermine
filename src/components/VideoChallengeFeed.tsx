@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import AchievementCelebration from "./AchievementCelebration";
+import UploadVideoModal from "./UploadVideoModal";
 import { useToast } from "@/hooks/use-toast";
 
 interface VideoChallenge {
@@ -409,6 +410,9 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
           />
         ))}
       </div>
+
+      {/* Upload Video Button */}
+      <UploadVideoModal />
     </div>
   );
 };

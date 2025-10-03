@@ -3,6 +3,7 @@ import ChallengeCard from "./ChallengeCard";
 import CreateChallengeModal from "./CreateChallengeModal";
 import PersonalChallengeSection from "./PersonalChallengeSection";
 import ScoreDisplay from "./ScoreDisplay";
+import UploadPhotoModal from "./UploadPhotoModal";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
 
@@ -167,6 +168,9 @@ const ChallengeFeed = () => {
           </p>
         </div>
       </div>
+
+      {/* Upload Photo Button */}
+      <UploadPhotoModal />
     </div>
   );
 };
