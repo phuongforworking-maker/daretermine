@@ -1,16 +1,26 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import ChallengeFeed from "@/components/ChallengeFeed";
 import VideoChallengeFeed from "@/components/VideoChallengeFeed";
 import UserProfileModal from "@/components/UserProfileModal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Play, Grid, ArrowRight, Zap, Target, TrendingUp, Users, User } from "lucide-react";
+import { Play, Grid, ArrowRight, Zap, Target, TrendingUp, Users, User, Trophy } from "lucide-react";
+import LevelButton from "@/components/LevelButton";
 import heroImage from "@/assets/hero-challenges.jpg";
 const Index = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [viewMode, setViewMode] = useState<"video" | "grid" | "landing">("landing");
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+  const [userScores] = useState({ impact: 1240, growth: 890 });
+
+  // Handle navigation from other pages
+  useEffect(() => {
+    if (location.state?.defaultView) {
+      setViewMode(location.state.defaultView);
+    }
+  }, [location]);
   const handleUserProfile = (userId: string) => {
     setSelectedUserId(userId);
   };
@@ -147,7 +157,7 @@ const Index = () => {
       </div>;
   }
   return <div className="relative">
-      {/* View Toggle */}
+      {/* View Toggle and Level Button */}
       <div className="fixed top-4 left-4 z-20 flex gap-2">
         <Button variant="outline" size="sm" onClick={() => setViewMode("landing")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
           About
@@ -164,6 +174,15 @@ const Index = () => {
           <User className="w-4 h-4 mr-1" />
           Account
         </Button>
+        <Button variant="outline" size="sm" onClick={() => navigate("/leaderboard")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
+          <Trophy className="w-4 h-4 mr-1" />
+          Leaderboard
+        </Button>
+      </div>
+
+      {/* Level Button - Top Right */}
+      <div className="fixed top-4 right-4 z-20">
+        <LevelButton impactScore={userScores.impact} growthScore={userScores.growth} />
       </div>
 
       {/* Content */}

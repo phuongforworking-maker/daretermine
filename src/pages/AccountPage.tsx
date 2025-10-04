@@ -26,6 +26,10 @@ interface ActiveChallenge {
 
 const AccountPage = () => {
   const navigate = useNavigate();
+  
+  const handleBackToVideos = () => {
+    navigate('/', { state: { defaultView: 'video' } });
+  };
   const [userStats] = useState({
     impactScore: 1240,
     growthScore: 890,
@@ -106,11 +110,11 @@ const AccountPage = () => {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => navigate(-1)}
+          onClick={handleBackToVideos}
           className="mb-4"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back
+          Back to Videos
         </Button>
         {/* Profile Header */}
         <Card className="p-6 mb-8">

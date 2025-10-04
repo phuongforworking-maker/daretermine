@@ -4,6 +4,7 @@ import CreateChallengeModal from "./CreateChallengeModal";
 import PersonalChallengeSection from "./PersonalChallengeSection";
 import ScoreDisplay from "./ScoreDisplay";
 import UploadPhotoModal from "./UploadPhotoModal";
+import SearchFilter, { FilterState } from "./SearchFilter";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
 
@@ -83,6 +84,8 @@ const sampleChallenges: Challenge[] = [
 const ChallengeFeed = () => {
   const [challenges, setChallenges] = useState<Challenge[]>(sampleChallenges);
   const [userScores, setUserScores] = useState({ impact: 1240, growth: 890 });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filters, setFilters] = useState<FilterState>({ niches: [], difficulties: [] });
 
   const handleJoinChallenge = (challengeId: string) => {
     setChallenges(prev => 
@@ -115,6 +118,22 @@ const ChallengeFeed = () => {
     setChallenges(prev => [challenge, ...prev]);
   };
 
+  // Filter challenges based on search and filters
+  const filteredChallenges = challenges.filter((challenge) => {
+    const matchesSearch = challenge.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         challenge.description.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    const matchesNiche = filters.niches.length === 0 || 
+                        filters.niches.some(niche => 
+                          challenge.category.toLowerCase().includes(niche.toLowerCase())
+                        );
+    
+    const matchesDifficulty = filters.difficulties.length === 0 ||
+                             filters.difficulties.includes(challenge.difficulty);
+    
+    return matchesSearch && matchesNiche && matchesDifficulty;
+  });
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -141,14 +160,28 @@ const ChallengeFeed = () => {
         {/* Personal Challenge Section */}
         <PersonalChallengeSection />
         
+        {/* Search and Filter */}
+        <div className="mb-6">
+          <SearchFilter 
+            onSearch={setSearchQuery}
+            onFilterChange={setFilters}
+          />
+        </div>
+        
         <div className="space-y-6">
-          {challenges.map((challenge) => (
+          {filteredChallenges.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No challenges found matching your filters.</p>
+            </div>
+          ) : (
+            filteredChallenges.map((challenge) => (
             <ChallengeCard
               key={challenge.id}
               challenge={challenge}
               onJoin={handleJoinChallenge}
             />
-          ))}
+            ))
+          )}
         </div>
         
         {/* Load more */}

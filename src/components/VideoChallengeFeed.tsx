@@ -5,6 +5,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import AchievementCelebration from "./AchievementCelebration";
 import UploadVideoModal from "./UploadVideoModal";
+import ScoreDisplay from "./ScoreDisplay";
+import LevelButton from "./LevelButton";
 import { useToast } from "@/hooks/use-toast";
 
 interface VideoChallenge {
@@ -130,6 +132,7 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
   const [challenges, setChallenges] = useState<VideoChallenge[]>(sampleVideoChallenges);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [userScores] = useState({ impact: 1240, growth: 890 });
   const { toast } = useToast();
 
   const currentChallenge = challenges[currentIndex];
@@ -397,6 +400,22 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
             `Join Challenge (${currentChallenge.participants.toLocaleString()} participants)`
           )}
         </Button>
+      </div>
+
+      {/* Score Display - Bottom Left Corner */}
+      <div className="absolute bottom-4 left-4 z-10">
+        <div className="bg-black/50 backdrop-blur-sm p-3 rounded-lg">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1">
+              <Trophy className="w-4 h-4 text-primary" />
+              <span className="text-white text-sm font-semibold">{userScores.impact}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Flame className="w-4 h-4 text-secondary" />
+              <span className="text-white text-sm font-semibold">{userScores.growth}</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Progress Indicator */}
