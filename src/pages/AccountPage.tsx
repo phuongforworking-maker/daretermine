@@ -130,7 +130,7 @@ const AccountPage = () => {
                 Keep up the great work! You're on a {userStats.currentStreak}-day streak 🔥
               </p>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-1 mb-1">
                     <Trophy className="w-4 h-4 text-primary" />
@@ -162,6 +162,22 @@ const AccountPage = () => {
                   </div>
                   <p className="text-xs text-muted-foreground">Day Streak</p>
                 </div>
+
+                <div className="text-center">
+                  <Button variant="outline" size="sm" className="w-full">
+                    <span className="text-lg font-bold">245</span>
+                    <span className="text-xs ml-1">Followers</span>
+                  </Button>
+                </div>
+              </div>
+
+              <div className="flex gap-2 mt-4">
+                <Button variant="outline" size="sm" className="flex-1">
+                  Following: 180
+                </Button>
+                <Button variant="default" size="sm" className="flex-1">
+                  Edit Profile
+                </Button>
               </div>
             </div>
           </div>

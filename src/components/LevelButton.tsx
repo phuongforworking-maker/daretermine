@@ -84,31 +84,34 @@ const LevelButton = ({ impactScore, growthScore }: LevelButtonProps) => {
               </div>
             </div>
 
-            {/* League Ladder */}
+            {/* Active Challenges Link */}
+            <Button
+              onClick={() => window.location.href = "/account"}
+              className="w-full bg-gradient-to-r from-primary to-primary-glow"
+            >
+              View Active Challenges
+            </Button>
+
+            {/* Nudging Users */}
             <div className="space-y-2">
-              <h4 className="font-semibold text-sm">League Ladder</h4>
-              <div className="space-y-1 text-sm">
+              <h4 className="font-semibold text-sm">Nudge Friends</h4>
+              <div className="space-y-2">
                 {[
-                  { name: "Diamond League", score: 1000, icon: "💎" },
-                  { name: "Gold League", score: 600, icon: "🏆" },
-                  { name: "Silver League", score: 400, icon: "🥈" },
-                  { name: "Bronze League", score: 250, icon: "🥉" },
-                  { name: "Metal League", score: 150, icon: "⚙️" },
-                  { name: "Wood League", score: 80, icon: "🪵" },
-                ].map((league) => (
+                  { id: "1", name: "Alice Johnson", streak: 5 },
+                  { id: "2", name: "Bob Smith", streak: 3 },
+                  { id: "3", name: "Carol White", streak: 7 },
+                ].map((user) => (
                   <div
-                    key={league.name}
-                    className={`flex items-center justify-between p-2 rounded ${
-                      totalScore >= league.score ? "bg-success/10" : "bg-muted/50"
-                    }`}
+                    key={user.id}
+                    className="flex items-center justify-between p-2 rounded bg-muted/50"
                   >
-                    <span className="flex items-center gap-2">
-                      <span>{league.icon}</span>
-                      <span>{league.name}</span>
-                    </span>
-                    <Badge variant={totalScore >= league.score ? "default" : "outline"}>
-                      {league.score}+ pts
-                    </Badge>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-medium">{user.name}</span>
+                      <span className="text-xs text-muted-foreground">{user.streak} day streak</span>
+                    </div>
+                    <Button size="sm" variant="outline">
+                      Nudge 👋
+                    </Button>
                   </div>
                 ))}
               </div>

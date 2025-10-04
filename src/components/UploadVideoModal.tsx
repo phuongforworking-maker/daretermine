@@ -125,30 +125,6 @@ const UploadVideoModal = () => {
             </Select>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="impactPoints">Impact Points</Label>
-              <Input
-                id="impactPoints"
-                type="number"
-                placeholder="100"
-                min="0"
-                required
-              />
-            </div>
-
-            <div>
-              <Label htmlFor="growthPoints">Growth Points</Label>
-              <Input
-                id="growthPoints"
-                type="number"
-                placeholder="150"
-                min="0"
-                required
-              />
-            </div>
-          </div>
-
           <Button type="submit" className="w-full">
             <Video className="w-4 h-4 mr-2" />
             Create Challenge

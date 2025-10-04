@@ -7,13 +7,17 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Play, Grid, ArrowRight, Zap, Target, TrendingUp, Users, User, Trophy } from "lucide-react";
 import LevelButton from "@/components/LevelButton";
+import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/hero-challenges.jpg";
+
 const Index = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { toast } = useToast();
   const [viewMode, setViewMode] = useState<"video" | "grid" | "landing">("landing");
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
-  const [userScores] = useState({ impact: 1240, growth: 890 });
+  const [userScores, setUserScores] = useState({ impact: 1240, growth: 890 });
+  const [hasSeenWelcomeBack, setHasSeenWelcomeBack] = useState(false);
 
   // Handle navigation from other pages
   useEffect(() => {
@@ -21,6 +25,34 @@ const Index = () => {
       setViewMode(location.state.defaultView);
     }
   }, [location]);
+
+  // Welcome back bonus - Add +1 point when user returns
+  useEffect(() => {
+    const lastVisit = localStorage.getItem("lastVisit");
+    const now = new Date().getTime();
+    
+    if (lastVisit && !hasSeenWelcomeBack) {
+      const timeDiff = now - parseInt(lastVisit);
+      const hoursDiff = timeDiff / (1000 * 60 * 60);
+      
+      // If more than 1 hour has passed, give welcome back bonus
+      if (hoursDiff >= 1) {
+        setUserScores(prev => ({
+          impact: prev.impact + 1,
+          growth: prev.growth,
+        }));
+        
+        toast({
+          title: "Welcome back! 🎉",
+          description: "+1 Impact point for returning!",
+        });
+        
+        setHasSeenWelcomeBack(true);
+      }
+    }
+    
+    localStorage.setItem("lastVisit", now.toString());
+  }, [hasSeenWelcomeBack, toast]);
   const handleUserProfile = (userId: string) => {
     setSelectedUserId(userId);
   };

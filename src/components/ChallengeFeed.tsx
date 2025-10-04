@@ -1,10 +1,8 @@
 import { useState } from "react";
 import ChallengeCard from "./ChallengeCard";
-import CreateChallengeModal from "./CreateChallengeModal";
 import PersonalChallengeSection from "./PersonalChallengeSection";
-import ScoreDisplay from "./ScoreDisplay";
-import UploadPhotoModal from "./UploadPhotoModal";
 import SearchFilter, { FilterState } from "./SearchFilter";
+import LevelButton from "./LevelButton";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
 
@@ -147,11 +145,9 @@ const ChallengeFeed = () => {
               <Button variant="outline" size="sm">
                 <RefreshCw className="w-4 h-4" />
               </Button>
-              <CreateChallengeModal onCreateChallenge={handleCreateChallenge} />
+              <LevelButton impactScore={userScores.impact} growthScore={userScores.growth} />
             </div>
           </div>
-          
-          <ScoreDisplay impactScore={userScores.impact} growthScore={userScores.growth} />
         </div>
       </div>
 
@@ -201,9 +197,6 @@ const ChallengeFeed = () => {
           </p>
         </div>
       </div>
-
-      {/* Upload Photo Button */}
-      <UploadPhotoModal />
     </div>
   );
 };

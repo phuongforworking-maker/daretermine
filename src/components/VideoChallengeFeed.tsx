@@ -227,8 +227,9 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
       {/* Overlay Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
-      {/* Navigation Arrows */}
-      <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-4 z-10">
+      {/* Right Side Actions */}
+      <div className="absolute right-4 bottom-32 flex flex-col gap-6 items-center z-10">
+        {/* Navigation Arrows */}
         <Button
           variant="ghost"
           size="icon"
@@ -237,18 +238,6 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
         >
           <ChevronUp className="w-6 h-6" />
         </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={handleNext}
-          className="bg-black/30 hover:bg-black/50 text-white border-white/20"
-        >
-          <ChevronDown className="w-6 h-6" />
-        </Button>
-      </div>
-
-      {/* Right Side Actions */}
-      <div className="absolute right-4 bottom-32 flex flex-col gap-4 items-center z-10">
         {/* User Avatar */}
         <div 
           className="cursor-pointer hover:scale-105 transition-transform"
@@ -305,6 +294,16 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
           </Button>
           <span className="text-white text-xs mt-1">24</span>
         </div>
+
+        {/* Down Arrow */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={handleNext}
+          className="bg-black/30 hover:bg-black/50 text-white border-white/20"
+        >
+          <ChevronDown className="w-6 h-6" />
+        </Button>
       </div>
 
       {/* Bottom Content */}
@@ -402,21 +401,6 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
         </Button>
       </div>
 
-      {/* Score Display - Bottom Left Corner */}
-      <div className="absolute bottom-4 left-4 z-10">
-        <div className="bg-black/50 backdrop-blur-sm p-3 rounded-lg">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1">
-              <Trophy className="w-4 h-4 text-primary" />
-              <span className="text-white text-sm font-semibold">{userScores.impact}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <Flame className="w-4 h-4 text-secondary" />
-              <span className="text-white text-sm font-semibold">{userScores.growth}</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Progress Indicator */}
       <div className="absolute top-4 left-1/2 transform -translate-x-1/2 flex gap-1 z-10">
