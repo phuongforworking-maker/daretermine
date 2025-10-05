@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import ChallengeFeed from "@/components/ChallengeFeed";
 import VideoChallengeFeed from "@/components/VideoChallengeFeed";
 import UserProfileModal from "@/components/UserProfileModal";
+import BottomNav from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Play, Grid, ArrowRight, Zap, Target, TrendingUp, Users, User, Trophy } from "lucide-react";
@@ -81,7 +82,9 @@ const Index = () => {
                     Start Your Journey
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
-                  
+                  <Button onClick={() => navigate("/auth")} variant="outline" size="lg">
+                    Sign In
+                  </Button>
                 </div>
 
                 {/* Stats */}
@@ -189,10 +192,10 @@ const Index = () => {
       </div>;
   }
   return <div className="relative">
-      {/* View Toggle and Level Button */}
-      <div className="fixed top-4 left-4 z-20 flex gap-2">
-        <Button variant="outline" size="sm" onClick={() => setViewMode("landing")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
-          About
+      {/* Desktop Top Navigation - Hidden on mobile */}
+      <div className="hidden md:flex fixed top-4 left-4 z-20 gap-2">
+        <Button variant="outline" size="sm" onClick={() => navigate("/auth")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
+          Sign In
         </Button>
         <Button variant={viewMode === "video" ? "default" : "outline"} size="sm" onClick={() => setViewMode("video")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
           <Play className="w-4 h-4 mr-1" />
@@ -222,6 +225,9 @@ const Index = () => {
 
       {/* User Profile Modal */}
       <UserProfileModal userId={selectedUserId} isOpen={!!selectedUserId} onClose={() => setSelectedUserId(null)} />
+
+      {/* Mobile Bottom Navigation */}
+      <BottomNav />
     </div>;
 };
 export default Index;

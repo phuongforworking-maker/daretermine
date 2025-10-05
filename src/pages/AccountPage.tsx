@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Trophy, Flame, Award, Clock, Target, TrendingUp, ArrowLeft } from "lucide-react";
+import BottomNav from "@/components/BottomNav";
 
 interface Badge {
   id: string;
@@ -104,7 +105,7 @@ const AccountPage = () => {
   ]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20 md:pb-8">
       <div className="container mx-auto px-4 py-8">
         {/* Back Button */}
         <Button
@@ -125,18 +126,38 @@ const AccountPage = () => {
             </Avatar>
             
             <div className="flex-1">
-              <h1 className="text-3xl font-bold mb-2">Your Progress</h1>
-              <p className="text-muted-foreground mb-4">
-                Keep up the great work! You're on a {userStats.currentStreak}-day streak 🔥
-              </p>
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h1 className="text-3xl font-bold mb-2">@yourprofile</h1>
+                  <p className="text-muted-foreground">
+                    {userStats.currentStreak}-day streak 🔥
+                  </p>
+                </div>
+                <Button variant="outline" size="sm">
+                  Edit Profile
+                </Button>
+              </div>
               
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {/* Followers/Following - Video Page Style */}
+              <div className="flex items-center gap-4 mb-4">
+                <div className="text-center">
+                  <div className="text-xl font-bold">245</div>
+                  <div className="text-xs text-muted-foreground">Followers</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-xl font-bold">180</div>
+                  <div className="text-xs text-muted-foreground">Following</div>
+                </div>
+              </div>
+
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-1 mb-1">
                     <Trophy className="w-4 h-4 text-primary" />
                     <span className="text-2xl font-bold text-primary">{userStats.impactScore}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">Impact Score</p>
+                  <p className="text-xs text-muted-foreground">Impact</p>
                 </div>
                 
                 <div className="text-center">
@@ -144,7 +165,7 @@ const AccountPage = () => {
                     <Flame className="w-4 h-4 text-secondary" />
                     <span className="text-2xl font-bold text-secondary">{userStats.growthScore}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">Growth Score</p>
+                  <p className="text-xs text-muted-foreground">Growth</p>
                 </div>
                 
                 <div className="text-center">
@@ -160,24 +181,8 @@ const AccountPage = () => {
                     <TrendingUp className="w-4 h-4 text-accent" />
                     <span className="text-2xl font-bold text-accent">{userStats.currentStreak}</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">Day Streak</p>
+                  <p className="text-xs text-muted-foreground">Streak</p>
                 </div>
-
-                <div className="text-center">
-                  <Button variant="outline" size="sm" className="w-full">
-                    <span className="text-lg font-bold">245</span>
-                    <span className="text-xs ml-1">Followers</span>
-                  </Button>
-                </div>
-              </div>
-
-              <div className="flex gap-2 mt-4">
-                <Button variant="outline" size="sm" className="flex-1">
-                  Following: 180
-                </Button>
-                <Button variant="default" size="sm" className="flex-1">
-                  Edit Profile
-                </Button>
               </div>
             </div>
           </div>
@@ -192,8 +197,22 @@ const AccountPage = () => {
             </h2>
             
             <div className="space-y-4">
-              {activeChallenges.map((challenge) => (
+              {activeChallenges.map((challenge, index) => (
                 <Card key={challenge.id} className="p-4">
+                  {/* Photo Grid for Challenge */}
+                  <div className="grid grid-cols-3 gap-1 mb-3 rounded-lg overflow-hidden">
+                    {[1, 2, 3, 4, 5, 6].map((photoIndex) => (
+                      <div
+                        key={photoIndex}
+                        className="aspect-square bg-muted flex items-center justify-center"
+                      >
+                        <span className="text-xs text-muted-foreground">
+                          Day {photoIndex}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
                       <h3 className="font-semibold mb-1">{challenge.title}</h3>
@@ -253,6 +272,9 @@ const AccountPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile Bottom Navigation */}
+      <BottomNav />
     </div>
   );
 };

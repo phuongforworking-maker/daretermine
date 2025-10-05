@@ -5,9 +5,28 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import AchievementCelebration from "./AchievementCelebration";
 import UploadVideoModal from "./UploadVideoModal";
-import ScoreDisplay from "./ScoreDisplay";
 import LevelButton from "./LevelButton";
 import { useToast } from "@/hooks/use-toast";
+
+// Expandable text component for long descriptions
+const ExpandableText = ({ text }: { text: string }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const preview = text.slice(0, 100) + "...";
+  
+  return (
+    <div className="text-white text-sm leading-relaxed">
+      <p>{isExpanded ? text : preview}</p>
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="text-white/80 hover:text-white p-0 h-auto font-normal underline mt-1"
+      >
+        {isExpanded ? "Show less" : "Show more"}
+      </Button>
+    </div>
+  );
+};
 
 interface VideoChallenge {
   id: string;
@@ -227,17 +246,18 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
       {/* Overlay Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
-      {/* Right Side Actions */}
-      <div className="absolute right-4 bottom-32 flex flex-col gap-6 items-center z-10">
-        {/* Navigation Arrows */}
+      {/* Right Side Actions - Centered Column */}
+      <div className="absolute right-4 bottom-24 md:bottom-32 flex flex-col gap-4 items-center z-10">
+        {/* Up Arrow */}
         <Button
           variant="ghost"
           size="icon"
           onClick={handlePrevious}
-          className="bg-black/30 hover:bg-black/50 text-white border-white/20"
+          className="bg-black/30 hover:bg-black/50 text-white border-white/20 rounded-full"
         >
           <ChevronUp className="w-6 h-6" />
         </Button>
+
         {/* User Avatar */}
         <div 
           className="cursor-pointer hover:scale-105 transition-transform"
@@ -329,9 +349,15 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
         </div>
 
         {/* Challenge Description */}
-        <p className="text-white text-sm mb-4 leading-relaxed">
-          {currentChallenge.description}
-        </p>
+        <div className="mb-4">
+          {currentChallenge.description.length > 100 ? (
+            <ExpandableText text={currentChallenge.description} />
+          ) : (
+            <p className="text-white text-sm leading-relaxed">
+              {currentChallenge.description}
+            </p>
+          )}
+        </div>
 
         {/* Challenge Details */}
         <div className="flex flex-wrap gap-2 mb-4">

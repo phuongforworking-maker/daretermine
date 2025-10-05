@@ -36,14 +36,14 @@ const UploadVideoModal = () => {
       <DialogTrigger asChild>
         <Button
           size="icon"
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-primary to-primary-glow hover:shadow-xl z-20"
+          className="fixed bottom-20 md:bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-primary to-primary-glow hover:shadow-xl z-20"
         >
           <Plus className="w-6 h-6" />
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Create Video Challenge</DialogTitle>
+          <DialogTitle>Create Video</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -83,30 +83,13 @@ const UploadVideoModal = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="duration">Duration</Label>
-              <Input
-                id="duration"
-                placeholder="e.g., 30 days"
-                required
-              />
-            </div>
-
-            <div>
-              <Label htmlFor="difficulty">Difficulty</Label>
-              <Select required>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Easy">Easy</SelectItem>
-                  <SelectItem value="Medium">Medium</SelectItem>
-                  <SelectItem value="Hard">Hard</SelectItem>
-                  <SelectItem value="Expert">Expert</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+          <div>
+            <Label htmlFor="duration">Duration</Label>
+            <Input
+              id="duration"
+              placeholder="e.g., 30 days"
+              required
+            />
           </div>
 
           <div>

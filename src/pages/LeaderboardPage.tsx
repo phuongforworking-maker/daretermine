@@ -6,9 +6,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Trophy, Flame, Crown, Swords, Shield, Search } from "lucide-react";
 import LevelButton from "@/components/LevelButton";
+import BottomNav from "@/components/BottomNav";
 import { useToast } from "@/hooks/use-toast";
 
 interface LeaderboardUser {
@@ -37,6 +39,17 @@ const LeaderboardPage = () => {
     impactScore: 1240,
     growthScore: 890,
   };
+
+  // Calculate user's league
+  const totalScore = currentUser.impactScore + currentUser.growthScore;
+  const getUserLeague = () => {
+    if (totalScore >= 1000) return "Diamond League";
+    if (totalScore >= 600) return "Gold League";
+    if (totalScore >= 400) return "Silver League";
+    return "Bronze League";
+  };
+
+  const userLeague = getUserLeague();
 
   const [leaderboard] = useState<LeaderboardUser[]>([
     {
@@ -136,7 +149,7 @@ const LeaderboardPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20 md:pb-8">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-6">
@@ -181,15 +194,15 @@ const LeaderboardPage = () => {
         </div>
 
         {/* League Tabs */}
-        <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="diamond">💎 Diamond</TabsTrigger>
-            <TabsTrigger value="gold">🏆 Gold</TabsTrigger>
-            <TabsTrigger value="silver">🥈 Silver</TabsTrigger>
+        <Tabs defaultValue={userLeague} className="w-full">
+          <TabsList className="grid w-full grid-cols-4 md:grid-cols-4">
+            <TabsTrigger value="All">All</TabsTrigger>
+            <TabsTrigger value="Diamond League">💎 Diamond</TabsTrigger>
+            <TabsTrigger value="Gold League">🏆 Gold</TabsTrigger>
+            <TabsTrigger value="Silver League">🥈 Silver</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="all" className="space-y-4 mt-6">
+          <TabsContent value="All" className="space-y-4 mt-6">
             {filteredLeaderboard.map((user) => (
               <Card key={user.id} className="p-4 hover:shadow-lg transition-all">
                 <div className="flex items-center justify-between">
@@ -247,7 +260,7 @@ const LeaderboardPage = () => {
             ))}
           </TabsContent>
 
-          <TabsContent value="diamond" className="space-y-4 mt-6">
+          <TabsContent value="Diamond League" className="space-y-4 mt-6">
             {filteredLeaderboard
               .filter(user => user.league === "Diamond League")
               .map((user) => (
@@ -307,7 +320,7 @@ const LeaderboardPage = () => {
               ))}
           </TabsContent>
 
-          <TabsContent value="gold" className="space-y-4 mt-6">
+          <TabsContent value="Gold League" className="space-y-4 mt-6">
             {filteredLeaderboard
               .filter(user => user.league === "Gold League")
               .map((user) => (
@@ -367,7 +380,7 @@ const LeaderboardPage = () => {
               ))}
           </TabsContent>
 
-          <TabsContent value="silver" className="space-y-4 mt-6">
+          <TabsContent value="Silver League" className="space-y-4 mt-6">
             {filteredLeaderboard
               .filter(user => user.league === "Silver League")
               .map((user) => (
@@ -430,8 +443,9 @@ const LeaderboardPage = () => {
       </div>
 
       {/* Challenge Dialog */}
+      {/* Challenge Dialog */}
       <Dialog open={challengeDialog} onOpenChange={setChallengeDialog}>
-        <DialogContent>
+        <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Swords className="w-5 h-5 text-primary" />
@@ -443,6 +457,19 @@ const LeaderboardPage = () => {
           </DialogHeader>
 
           <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Choose Activity</label>
+              <Select defaultValue="active">
+                <SelectTrigger>
+                  <SelectValue placeholder="Select an activity" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="active">Use Active Challenge</SelectItem>
+                  <SelectItem value="new">Create New Activity</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
             <div className="space-y-2">
               <label className="text-sm font-medium">Wager Amount (Points)</label>
               <Input
@@ -479,6 +506,9 @@ const LeaderboardPage = () => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Mobile Bottom Navigation */}
+      <BottomNav />
     </div>
   );
 };
