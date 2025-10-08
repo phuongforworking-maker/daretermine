@@ -8,9 +8,10 @@ import { Trophy, Award } from "lucide-react";
 interface LevelButtonProps {
   impactScore: number;
   growthScore: number;
+  compact?: boolean;
 }
 
-const LevelButton = ({ impactScore, growthScore }: LevelButtonProps) => {
+const LevelButton = ({ impactScore, growthScore, compact = false }: LevelButtonProps) => {
   const [showDetails, setShowDetails] = useState(false);
 
   // Calculate level based on the scoring table
@@ -34,11 +35,11 @@ const LevelButton = ({ impactScore, growthScore }: LevelButtonProps) => {
     <>
       <Button
         onClick={() => setShowDetails(true)}
-        className="bg-gradient-to-r from-primary to-secondary hover:shadow-lg"
-        size="sm"
+        className={`bg-gradient-to-r from-primary to-secondary hover:shadow-lg ${compact ? "text-xs h-7 px-2" : ""}`}
+        size={compact ? "sm" : "sm"}
       >
-        <Trophy className="w-4 h-4 mr-2" />
-        {level.icon} {level.name}
+        <Trophy className={compact ? "w-3 h-3 mr-1" : "w-4 h-4 mr-2"} />
+        <span className={compact ? "text-[10px]" : ""}>{level.icon} {compact ? level.name.split(" ")[0] : level.name}</span>
       </Button>
 
       <Dialog open={showDetails} onOpenChange={setShowDetails}>

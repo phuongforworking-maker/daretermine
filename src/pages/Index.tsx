@@ -218,7 +218,7 @@ const Index = () => {
       {/* Level Button - Top Right - Only show in video mode */}
       {viewMode === "video" && (
         <div className="fixed top-4 right-4 z-20">
-          <LevelButton impactScore={userScores.impact} growthScore={userScores.growth} />
+          <LevelButton impactScore={userScores.impact} growthScore={userScores.growth} compact={true} />
         </div>
       )}
 

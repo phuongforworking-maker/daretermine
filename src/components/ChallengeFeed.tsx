@@ -139,7 +139,7 @@ const ChallengeFeed = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent px-2">
-              Page
+              Challenge Feed
             </h1>
             <div className="flex gap-2">
               <Button variant="outline" size="sm">

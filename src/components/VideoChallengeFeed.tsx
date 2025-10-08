@@ -248,14 +248,14 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
 
       {/* Right Side Actions - Centered Column */}
       <div className="absolute right-4 bottom-24 md:bottom-32 flex flex-col gap-4 items-center z-10">
-        {/* Up Arrow */}
+        {/* Up Arrow - Minimal Style */}
         <Button
           variant="ghost"
           size="icon"
           onClick={handlePrevious}
-          className="bg-black/30 hover:bg-black/50 text-white border-white/20 rounded-full"
+          className="bg-white/10 hover:bg-white/20 text-white border-none rounded-full w-10 h-10"
         >
-          <ChevronUp className="w-6 h-6" />
+          <ChevronUp className="w-5 h-5" />
         </Button>
 
         {/* User Avatar */}
@@ -310,14 +310,24 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
           <span className="text-white text-xs mt-1">24</span>
         </div>
 
-        {/* Down Arrow */}
+        {/* Down Arrow - Minimal Style */}
         <Button
           variant="ghost"
           size="icon"
           onClick={handleNext}
-          className="bg-black/30 hover:bg-black/50 text-white border-white/20"
+          className="bg-white/10 hover:bg-white/20 text-white border-none rounded-full w-10 h-10"
         >
-          <ChevronDown className="w-6 h-6" />
+          <ChevronDown className="w-5 h-5" />
+        </Button>
+        
+        {/* Second Down Arrow - Minimal Style */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={handleNext}
+          className="bg-white/10 hover:bg-white/20 text-white border-none rounded-full w-10 h-10"
+        >
+          <ChevronDown className="w-5 h-5" />
         </Button>
       </div>
 

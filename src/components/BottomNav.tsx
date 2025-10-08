@@ -21,8 +21,8 @@ const BottomNav = () => {
   };
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-black border-t border-border z-50">
-      <nav className="flex items-center justify-around h-14 px-1">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-black border-t border-primary/20 z-50">
+      <nav className="flex items-center justify-around h-10 px-1">
         {navItems.map((item) => {
           const Icon = item.icon;
           const active = isActive(item.path, item.state);
@@ -31,14 +31,14 @@ const BottomNav = () => {
             <button
               key={item.label}
               onClick={() => navigate(item.path, { state: item.state })}
-              className={`flex flex-col items-center justify-center flex-1 h-full transition-colors py-1 ${
+              className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
                 active
                   ? "text-primary"
-                  : "text-white/60 hover:text-white/80"
+                  : "text-white/50 hover:text-white/70"
               }`}
             >
-              <Icon className={`w-6 h-6 ${active ? "fill-current" : ""}`} />
-              <span className="text-[10px] mt-0.5">{item.label}</span>
+              <Icon className={`w-5 h-5 ${active ? "fill-current" : ""}`} />
+              <span className="text-[9px]">{item.label}</span>
             </button>
           );
         })}
