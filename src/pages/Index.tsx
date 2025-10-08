@@ -215,10 +215,12 @@ const Index = () => {
         </Button>
       </div>
 
-      {/* Level Button - Top Right */}
-      <div className="fixed top-4 right-4 z-20">
-        <LevelButton impactScore={userScores.impact} growthScore={userScores.growth} />
-      </div>
+      {/* Level Button - Top Right - Only show in video mode */}
+      {viewMode === "video" && (
+        <div className="fixed top-4 right-4 z-20">
+          <LevelButton impactScore={userScores.impact} growthScore={userScores.growth} />
+        </div>
+      )}
 
       {/* Content */}
       {viewMode === "video" ? <VideoChallengeFeed onUserProfile={handleUserProfile} /> : <ChallengeFeed />}

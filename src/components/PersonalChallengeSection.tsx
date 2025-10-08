@@ -67,9 +67,9 @@ const PersonalChallengeSection = () => {
                 variant="outline"
                 role="combobox"
                 aria-expanded={open}
-                className="w-full justify-between"
+                className="w-full justify-between text-left"
               >
-                {searchValue || "Type your challenge or browse suggestions..."}
+                <span className="truncate">{searchValue || "Type your challenge..."}</span>
                 <Search className="ml-2 h-4 w-4 shrink-0 opacity-50" />
               </Button>
             </PopoverTrigger>

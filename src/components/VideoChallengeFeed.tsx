@@ -267,11 +267,6 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
             <AvatarImage src={currentChallenge.user.avatar} />
             <AvatarFallback>{currentChallenge.user.username[0].toUpperCase()}</AvatarFallback>
           </Avatar>
-          {currentChallenge.user.isVerified && (
-            <div className="absolute -bottom-1 -right-1 bg-primary rounded-full p-1">
-              <Crown className="w-3 h-3 text-white" />
-            </div>
-          )}
         </div>
 
         {/* Like Button */}
@@ -327,80 +322,80 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
       </div>
 
       {/* Bottom Content */}
-      <div className="absolute bottom-0 left-0 right-20 p-6 z-10">
+      <div className="absolute bottom-0 left-0 right-20 p-4 md:p-6 z-10 max-h-[33vh] overflow-y-auto">
         {/* User Info */}
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-2 mb-2">
           <div 
             className="cursor-pointer hover:scale-105 transition-transform"
             onClick={() => onUserProfile?.(currentChallenge.user.id)}
           >
-            <span className="text-white font-semibold">@{currentChallenge.user.username}</span>
+            <span className="text-white font-semibold text-sm">@{currentChallenge.user.username}</span>
             {currentChallenge.user.isVerified && (
-              <Crown className="w-4 h-4 text-primary inline ml-1" />
+              <Crown className="w-3 h-3 text-primary inline ml-1" />
             )}
           </div>
           <Button
             variant="outline"
             size="sm"
-            className="bg-transparent border-white text-white hover:bg-white hover:text-black"
+            className="bg-transparent border-white text-white hover:bg-white hover:text-black text-xs h-7 px-2"
           >
             Follow
           </Button>
         </div>
 
         {/* Challenge Description */}
-        <div className="mb-4">
+        <div className="mb-3">
           {currentChallenge.description.length > 100 ? (
             <ExpandableText text={currentChallenge.description} />
           ) : (
-            <p className="text-white text-sm leading-relaxed">
+            <p className="text-white text-xs leading-relaxed">
               {currentChallenge.description}
             </p>
           )}
         </div>
 
         {/* Challenge Details */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          <Badge className={difficultyColors[currentChallenge.difficulty]}>
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          <Badge className={`${difficultyColors[currentChallenge.difficulty]} text-[10px] px-1.5 py-0`}>
             {currentChallenge.difficulty}
           </Badge>
-          <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+          <Badge variant="secondary" className="bg-white/20 text-white border-white/30 text-[10px] px-1.5 py-0">
             {currentChallenge.duration}
           </Badge>
-          <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+          <Badge variant="secondary" className="bg-white/20 text-white border-white/30 text-[10px] px-1.5 py-0">
             {currentChallenge.category}
           </Badge>
           {currentChallenge.isPrivate && (
-            <Badge variant="secondary" className="bg-purple-500/20 text-purple-200 border-purple-300/30">
+            <Badge variant="secondary" className="bg-purple-500/20 text-purple-200 border-purple-300/30 text-[10px] px-1.5 py-0">
               Private
             </Badge>
           )}
         </div>
 
         {/* Rewards */}
-        <div className="flex items-center gap-4 mb-6">
+        <div className="flex items-center gap-3 mb-3">
           <div className="flex items-center gap-1">
-            <Trophy className="w-4 h-4 text-primary" />
-            <span className="text-white text-sm">+{currentChallenge.impactPoints} Impact</span>
+            <Trophy className="w-3 h-3 text-primary" />
+            <span className="text-white text-xs">+{currentChallenge.impactPoints} Impact</span>
           </div>
           <div className="flex items-center gap-1">
-            <Flame className="w-4 h-4 text-secondary" />
-            <span className="text-white text-sm">+{currentChallenge.growthPoints} Growth</span>
+            <Flame className="w-3 h-3 text-secondary" />
+            <span className="text-white text-xs">+{currentChallenge.growthPoints} Growth</span>
           </div>
         </div>
 
         {/* Joined Users Preview */}
         {currentChallenge.joinedUsers.length > 0 && (
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-3">
             <div className="flex -space-x-2">
               {currentChallenge.joinedUsers.slice(0, 3).map((user) => (
-                <Avatar key={user.id} className="w-6 h-6 border-2 border-white">
+                <Avatar key={user.id} className="w-5 h-5 border-2 border-white">
                   <AvatarImage src={user.avatar} />
-                  <AvatarFallback className="text-xs">{user.username[0].toUpperCase()}</AvatarFallback>
+                  <AvatarFallback className="text-[10px]">{user.username[0].toUpperCase()}</AvatarFallback>
                 </Avatar>
               ))}
             </div>
-            <span className="text-white text-xs">
+            <span className="text-white text-[10px]">
               {currentChallenge.joinedUsers[0]?.username} and {currentChallenge.participants.toLocaleString()} others joined
             </span>
           </div>
@@ -410,11 +405,12 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
         <Button
           onClick={handleJoinChallenge}
           disabled={currentChallenge.isJoined}
-          className={`w-full ${
+          className={`w-full text-sm ${
             currentChallenge.isJoined
               ? "bg-success hover:bg-success/90 text-white"
               : "bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
           }`}
+          size="sm"
         >
           {currentChallenge.isJoined ? (
             <>
