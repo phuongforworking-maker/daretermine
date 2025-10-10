@@ -104,7 +104,7 @@ const AuthPage = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-primary to-primary-glow"
+                  className="w-full bg-[#ff6b35] hover:bg-[#ff6b35]/90 text-white"
                   disabled={isLoading}
                 >
                   {isLoading ? "Signing in..." : "Sign In"}

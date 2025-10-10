@@ -248,16 +248,6 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
 
       {/* Right Side Actions - Centered Column */}
       <div className="absolute right-4 bottom-24 md:bottom-32 flex flex-col gap-4 items-center z-10">
-        {/* Up Arrow - Minimal Style */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={handlePrevious}
-          className="bg-white/10 hover:bg-white/20 text-white border-none rounded-full w-10 h-10"
-        >
-          <ChevronUp className="w-5 h-5" />
-        </Button>
-
         {/* User Avatar */}
         <div 
           className="cursor-pointer hover:scale-105 transition-transform"
@@ -268,6 +258,16 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
             <AvatarFallback>{currentChallenge.user.username[0].toUpperCase()}</AvatarFallback>
           </Avatar>
         </div>
+        
+        {/* Up Arrow - Minimal Style - Below Diamond League */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={handlePrevious}
+          className="bg-white/10 hover:bg-white/20 text-white border-none rounded-full w-10 h-10"
+        >
+          <ChevronUp className="w-5 h-5" />
+        </Button>
 
         {/* Like Button */}
         <div className="flex flex-col items-center">
@@ -311,16 +311,6 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
         </div>
 
         {/* Down Arrow - Minimal Style */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={handleNext}
-          className="bg-white/10 hover:bg-white/20 text-white border-none rounded-full w-10 h-10"
-        >
-          <ChevronDown className="w-5 h-5" />
-        </Button>
-        
-        {/* Second Down Arrow - Minimal Style */}
         <Button
           variant="ghost"
           size="icon"
