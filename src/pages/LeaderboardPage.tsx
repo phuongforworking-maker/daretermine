@@ -219,31 +219,31 @@ const LeaderboardPage = () => {
                     <AvatarFallback>{user.username[0]}</AvatarFallback>
                   </Avatar>
 
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-base truncate">{user.username}</h3>
-                    <div className="flex items-center gap-2 text-xs flex-wrap">
-                      <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
+                  <div className="flex-1 min-w-0 max-w-[150px]">
+                    <h3 className="font-semibold text-sm truncate">{user.username}</h3>
+                    <div className="flex items-center gap-2 text-xs">
+                      <Badge variant="secondary" className="text-[9px] px-1.5 py-0 truncate">
                         {user.league.replace(' League', '')}
                       </Badge>
                       <div className="flex items-center gap-0.5">
                         <Trophy className="w-3 h-3 text-primary" />
-                        <span className="text-muted-foreground">{user.impactScore}</span>
+                        <span className="text-muted-foreground text-[10px]">{user.impactScore}</span>
                       </div>
                       <div className="flex items-center gap-0.5">
                         <Flame className="w-3 h-3 text-secondary" />
-                        <span className="text-muted-foreground">{user.growthScore}</span>
+                        <span className="text-muted-foreground text-[10px]">{user.growthScore}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <div className="text-right hidden md:block">
-                    <div className="flex items-center gap-1 text-xs">
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <div className="text-right hidden sm:block">
+                    <div className="flex items-center gap-0.5 text-[10px]">
                       <Swords className="w-3 h-3 text-accent" />
                       <span className="text-muted-foreground">{user.challengeWins}</span>
                     </div>
-                    <div className="flex items-center gap-1 text-xs">
+                    <div className="flex items-center gap-0.5 text-[10px]">
                       <Shield className="w-3 h-3 text-success" />
                       <span className="text-muted-foreground">{user.defenseWins}</span>
                     </div>
@@ -251,11 +251,11 @@ const LeaderboardPage = () => {
 
                   <Button
                     onClick={() => handleChallenge(user)}
-                    className="bg-gradient-to-r from-primary to-primary-glow text-xs h-8 px-3"
+                    className="bg-gradient-to-r from-primary to-primary-glow text-[10px] h-7 px-2"
                     size="sm"
                   >
                     <Swords className="w-3 h-3 mr-1" />
-                    Challenge
+                    <span className="hidden sm:inline">Challenge</span>
                   </Button>
                 </div>
                 </div>

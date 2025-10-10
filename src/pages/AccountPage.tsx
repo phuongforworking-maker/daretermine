@@ -117,72 +117,70 @@ const AccountPage = () => {
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Videos
         </Button>
-        {/* Profile Header */}
-        <Card className="p-4 md:p-6 mb-8">
-          <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
-            <Avatar className="w-20 h-20 md:w-24 md:h-24">
+        {/* Profile Header - Centered Layout */}
+        <Card className="p-6 mb-8">
+          <div className="flex flex-col items-center text-center">
+            {/* Avatar */}
+            <Avatar className="w-24 h-24 mb-4">
               <AvatarImage src="/api/placeholder/100/100" />
               <AvatarFallback>YO</AvatarFallback>
             </Avatar>
             
-            <div className="flex-1 w-full">
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
-                <div>
-                  <h1 className="text-2xl md:text-3xl font-bold mb-1 md:mb-2">@yourprofile</h1>
-                  <p className="text-sm text-muted-foreground">
-                    {userStats.currentStreak}-day streak 🔥
-                  </p>
+            {/* Username */}
+            <h1 className="text-2xl font-bold mb-1">@yourprofile</h1>
+            <p className="text-sm text-muted-foreground mb-4">
+              {userStats.currentStreak}-day streak 🔥
+            </p>
+            
+            {/* Edit Profile Button */}
+            <Button variant="outline" size="sm" className="mb-4">
+              Edit Profile
+            </Button>
+            
+            {/* Followers/Following - Centered */}
+            <div className="flex items-center gap-6 mb-6">
+              <div className="text-center">
+                <div className="text-xl font-bold">245</div>
+                <div className="text-xs text-muted-foreground">Followers</div>
+              </div>
+              <div className="text-center">
+                <div className="text-xl font-bold">180</div>
+                <div className="text-xs text-muted-foreground">Following</div>
+              </div>
+            </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-2xl">
+              <div className="text-center p-3 rounded-lg bg-primary/5">
+                <div className="flex items-center justify-center gap-1 mb-1">
+                  <Trophy className="w-4 h-4 text-primary" />
+                  <span className="text-xl font-bold text-primary">{userStats.impactScore}</span>
                 </div>
-                <Button variant="outline" size="sm" className="self-start md:self-auto">
-                  Edit Profile
-                </Button>
+                <p className="text-xs text-muted-foreground">Impact</p>
               </div>
               
-              {/* Followers/Following - Video Page Style */}
-              <div className="flex items-center gap-4 mb-4">
-                <div className="text-center">
-                  <div className="text-lg md:text-xl font-bold">245</div>
-                  <div className="text-[10px] md:text-xs text-muted-foreground">Followers</div>
+              <div className="text-center p-3 rounded-lg bg-secondary/5">
+                <div className="flex items-center justify-center gap-1 mb-1">
+                  <Flame className="w-4 h-4 text-secondary" />
+                  <span className="text-xl font-bold text-secondary">{userStats.growthScore}</span>
                 </div>
-                <div className="text-center">
-                  <div className="text-lg md:text-xl font-bold">180</div>
-                  <div className="text-[10px] md:text-xs text-muted-foreground">Following</div>
-                </div>
+                <p className="text-xs text-muted-foreground">Growth</p>
               </div>
-
-              {/* Stats Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-1 mb-1">
-                    <Trophy className="w-3 h-3 md:w-4 md:h-4 text-primary" />
-                    <span className="text-lg md:text-2xl font-bold text-primary">{userStats.impactScore}</span>
-                  </div>
-                  <p className="text-[10px] md:text-xs text-muted-foreground">Impact</p>
+              
+              <div className="text-center p-3 rounded-lg bg-success/5">
+                <div className="flex items-center justify-center gap-1 mb-1">
+                  <Target className="w-4 h-4 text-success" />
+                  <span className="text-xl font-bold text-success">{userStats.completedChallenges}</span>
                 </div>
-                
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-1 mb-1">
-                    <Flame className="w-3 h-3 md:w-4 md:h-4 text-secondary" />
-                    <span className="text-lg md:text-2xl font-bold text-secondary">{userStats.growthScore}</span>
-                  </div>
-                  <p className="text-[10px] md:text-xs text-muted-foreground">Growth</p>
+                <p className="text-xs text-muted-foreground">Completed</p>
+              </div>
+              
+              <div className="text-center p-3 rounded-lg bg-accent/5">
+                <div className="flex items-center justify-center gap-1 mb-1">
+                  <TrendingUp className="w-4 h-4 text-accent" />
+                  <span className="text-xl font-bold text-accent">{userStats.currentStreak}</span>
                 </div>
-                
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-1 mb-1">
-                    <Target className="w-3 h-3 md:w-4 md:h-4 text-success" />
-                    <span className="text-lg md:text-2xl font-bold text-success">{userStats.completedChallenges}</span>
-                  </div>
-                  <p className="text-[10px] md:text-xs text-muted-foreground">Completed</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-1 mb-1">
-                    <TrendingUp className="w-3 h-3 md:w-4 md:h-4 text-accent" />
-                    <span className="text-lg md:text-2xl font-bold text-accent">{userStats.currentStreak}</span>
-                  </div>
-                  <p className="text-[10px] md:text-xs text-muted-foreground">Streak</p>
-                </div>
+                <p className="text-xs text-muted-foreground">Streak</p>
               </div>
             </div>
           </div>
@@ -214,14 +212,14 @@ const AccountPage = () => {
                   </div>
 
                   <div className="flex items-start justify-between mb-3">
-                    <div className="flex-1">
-                      <h3 className="font-semibold mb-1">{challenge.title}</h3>
-                      <Badge variant="secondary" className="text-xs">
+                    <div className="flex-1 min-w-0 mr-2">
+                      <h3 className="font-semibold mb-1 text-sm truncate">{challenge.title}</h3>
+                      <Badge variant="secondary" className="text-[10px] truncate">
                         {challenge.category}
                       </Badge>
                     </div>
-                    <span className="text-sm text-muted-foreground">
-                      {challenge.daysCompleted}/{challenge.totalDays} days
+                    <span className="text-xs text-muted-foreground whitespace-nowrap">
+                      {challenge.daysCompleted}/{challenge.totalDays}
                     </span>
                   </div>
                   
@@ -251,9 +249,9 @@ const AccountPage = () => {
                       : "opacity-50 grayscale"
                   }`}
                 >
-                  <div className="text-4xl mb-2">{badge.icon}</div>
-                  <h3 className="font-semibold text-sm mb-1">{badge.name}</h3>
-                  <p className="text-xs text-muted-foreground mb-2">
+                  <div className="text-3xl mb-2">{badge.icon}</div>
+                  <h3 className="font-semibold text-xs mb-1 truncate">{badge.name}</h3>
+                  <p className="text-[10px] text-muted-foreground mb-2 line-clamp-2">
                     {badge.description}
                   </p>
                   {badge.earned && badge.earnedDate && (
