@@ -204,58 +204,46 @@ const LeaderboardPage = () => {
 
           <TabsContent value="All" className="space-y-4 mt-6">
             {filteredLeaderboard.map((user) => (
-              <Card key={user.id} className="p-4 hover:shadow-lg transition-all">
-                <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2 w-12">
+              <Card key={user.id} className="p-3 hover:shadow-lg transition-all">
+                <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 min-w-0 flex-1">
+                  <div className="flex items-center gap-1 w-8 flex-shrink-0">
                     {getRankIcon(user.rank)}
-                    <span className="text-xl font-bold text-muted-foreground">
+                    <span className="text-sm font-bold text-muted-foreground">
                       #{user.rank}
                     </span>
                   </div>
 
-                  <Avatar className="w-10 h-10">
+                  <Avatar className="w-8 h-8 flex-shrink-0">
                     <AvatarImage src={user.avatar} />
                     <AvatarFallback>{user.username[0]}</AvatarFallback>
                   </Avatar>
 
-                  <div className="flex-1 min-w-0 max-w-[150px]">
-                    <h3 className="font-semibold text-sm truncate">{user.username}</h3>
-                    <div className="flex items-center gap-2 text-xs">
-                      <Badge variant="secondary" className="text-[9px] px-1.5 py-0 truncate">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-xs truncate">{user.username}</h3>
+                    <div className="flex items-center gap-1.5 text-xs">
+                      <Badge variant="secondary" className="text-[8px] px-1 py-0 max-w-[60px] truncate">
                         {user.league.replace(' League', '')}
                       </Badge>
                       <div className="flex items-center gap-0.5">
-                        <Trophy className="w-3 h-3 text-primary" />
-                        <span className="text-muted-foreground text-[10px]">{user.impactScore}</span>
+                        <Trophy className="w-2.5 h-2.5 text-primary" />
+                        <span className="text-muted-foreground text-[9px]">{user.impactScore}</span>
                       </div>
                       <div className="flex items-center gap-0.5">
-                        <Flame className="w-3 h-3 text-secondary" />
-                        <span className="text-muted-foreground text-[10px]">{user.growthScore}</span>
+                        <Flame className="w-2.5 h-2.5 text-secondary" />
+                        <span className="text-muted-foreground text-[9px]">{user.growthScore}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 flex-shrink-0">
-                  <div className="text-right hidden sm:block">
-                    <div className="flex items-center gap-0.5 text-[10px]">
-                      <Swords className="w-3 h-3 text-accent" />
-                      <span className="text-muted-foreground">{user.challengeWins}</span>
-                    </div>
-                    <div className="flex items-center gap-0.5 text-[10px]">
-                      <Shield className="w-3 h-3 text-success" />
-                      <span className="text-muted-foreground">{user.defenseWins}</span>
-                    </div>
-                  </div>
-
+                <div className="flex items-center gap-1 flex-shrink-0">
                   <Button
                     onClick={() => handleChallenge(user)}
-                    className="bg-gradient-to-r from-primary to-primary-glow text-[10px] h-7 px-2"
+                    className="bg-gradient-to-r from-primary to-primary-glow text-[9px] h-6 px-1.5"
                     size="sm"
                   >
-                    <Swords className="w-3 h-3 mr-1" />
-                    <span className="hidden sm:inline">Challenge</span>
+                    <Swords className="w-3 h-3" />
                   </Button>
                 </div>
                 </div>
@@ -267,55 +255,46 @@ const LeaderboardPage = () => {
             {filteredLeaderboard
               .filter(user => user.league === "Diamond League")
               .map((user) => (
-                <Card key={user.id} className="p-4 hover:shadow-lg transition-all">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-2 w-12">
+                <Card key={user.id} className="p-3 hover:shadow-lg transition-all">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 min-w-0 flex-1">
+                      <div className="flex items-center gap-1 w-8 flex-shrink-0">
                         {getRankIcon(user.rank)}
-                        <span className="text-2xl font-bold text-muted-foreground">
+                        <span className="text-sm font-bold text-muted-foreground">
                           #{user.rank}
                         </span>
                       </div>
 
-                      <Avatar className="w-12 h-12">
+                      <Avatar className="w-8 h-8 flex-shrink-0">
                         <AvatarImage src={user.avatar} />
                         <AvatarFallback>{user.username[0]}</AvatarFallback>
                       </Avatar>
 
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-lg">{user.username}</h3>
-                        <div className="flex items-center gap-3 text-sm">
-                          <Badge variant="secondary">{user.league}</Badge>
-                          <div className="flex items-center gap-1">
-                            <Trophy className="w-3 h-3 text-primary" />
-                            <span className="text-muted-foreground">{user.impactScore}</span>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-xs truncate">{user.username}</h3>
+                        <div className="flex items-center gap-1.5 text-xs">
+                          <Badge variant="secondary" className="text-[8px] px-1 py-0 max-w-[60px] truncate">
+                            {user.league.replace(' League', '')}
+                          </Badge>
+                          <div className="flex items-center gap-0.5">
+                            <Trophy className="w-2.5 h-2.5 text-primary" />
+                            <span className="text-muted-foreground text-[9px]">{user.impactScore}</span>
                           </div>
-                          <div className="flex items-center gap-1">
-                            <Flame className="w-3 h-3 text-secondary" />
-                            <span className="text-muted-foreground">{user.growthScore}</span>
+                          <div className="flex items-center gap-0.5">
+                            <Flame className="w-2.5 h-2.5 text-secondary" />
+                            <span className="text-muted-foreground text-[9px]">{user.growthScore}</span>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                      <div className="text-right mr-4">
-                        <div className="flex items-center gap-1 text-sm">
-                          <Swords className="w-4 h-4 text-accent" />
-                          <span className="text-muted-foreground">{user.challengeWins} wins</span>
-                        </div>
-                        <div className="flex items-center gap-1 text-sm">
-                          <Shield className="w-4 h-4 text-success" />
-                          <span className="text-muted-foreground">{user.defenseWins} defenses</span>
-                        </div>
-                      </div>
-
+                    <div className="flex items-center gap-1 flex-shrink-0">
                       <Button
                         onClick={() => handleChallenge(user)}
-                        className="bg-gradient-to-r from-primary to-primary-glow"
+                        className="bg-gradient-to-r from-primary to-primary-glow text-[9px] h-6 px-1.5"
+                        size="sm"
                       >
-                        <Swords className="w-4 h-4 mr-2" />
-                        Challenge
+                        <Swords className="w-3 h-3" />
                       </Button>
                     </div>
                   </div>
@@ -327,55 +306,46 @@ const LeaderboardPage = () => {
             {filteredLeaderboard
               .filter(user => user.league === "Gold League")
               .map((user) => (
-                <Card key={user.id} className="p-4 hover:shadow-lg transition-all">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-2 w-12">
+                <Card key={user.id} className="p-3 hover:shadow-lg transition-all">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 min-w-0 flex-1">
+                      <div className="flex items-center gap-1 w-8 flex-shrink-0">
                         {getRankIcon(user.rank)}
-                        <span className="text-2xl font-bold text-muted-foreground">
+                        <span className="text-sm font-bold text-muted-foreground">
                           #{user.rank}
                         </span>
                       </div>
 
-                      <Avatar className="w-12 h-12">
+                      <Avatar className="w-8 h-8 flex-shrink-0">
                         <AvatarImage src={user.avatar} />
                         <AvatarFallback>{user.username[0]}</AvatarFallback>
                       </Avatar>
 
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-lg">{user.username}</h3>
-                        <div className="flex items-center gap-3 text-sm">
-                          <Badge variant="secondary">{user.league}</Badge>
-                          <div className="flex items-center gap-1">
-                            <Trophy className="w-3 h-3 text-primary" />
-                            <span className="text-muted-foreground">{user.impactScore}</span>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-xs truncate">{user.username}</h3>
+                        <div className="flex items-center gap-1.5 text-xs">
+                          <Badge variant="secondary" className="text-[8px] px-1 py-0 max-w-[60px] truncate">
+                            {user.league.replace(' League', '')}
+                          </Badge>
+                          <div className="flex items-center gap-0.5">
+                            <Trophy className="w-2.5 h-2.5 text-primary" />
+                            <span className="text-muted-foreground text-[9px]">{user.impactScore}</span>
                           </div>
-                          <div className="flex items-center gap-1">
-                            <Flame className="w-3 h-3 text-secondary" />
-                            <span className="text-muted-foreground">{user.growthScore}</span>
+                          <div className="flex items-center gap-0.5">
+                            <Flame className="w-2.5 h-2.5 text-secondary" />
+                            <span className="text-muted-foreground text-[9px]">{user.growthScore}</span>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                      <div className="text-right mr-4">
-                        <div className="flex items-center gap-1 text-sm">
-                          <Swords className="w-4 h-4 text-accent" />
-                          <span className="text-muted-foreground">{user.challengeWins} wins</span>
-                        </div>
-                        <div className="flex items-center gap-1 text-sm">
-                          <Shield className="w-4 h-4 text-success" />
-                          <span className="text-muted-foreground">{user.defenseWins} defenses</span>
-                        </div>
-                      </div>
-
+                    <div className="flex items-center gap-1 flex-shrink-0">
                       <Button
                         onClick={() => handleChallenge(user)}
-                        className="bg-gradient-to-r from-primary to-primary-glow"
+                        className="bg-gradient-to-r from-primary to-primary-glow text-[9px] h-6 px-1.5"
+                        size="sm"
                       >
-                        <Swords className="w-4 h-4 mr-2" />
-                        Challenge
+                        <Swords className="w-3 h-3" />
                       </Button>
                     </div>
                   </div>
@@ -387,55 +357,46 @@ const LeaderboardPage = () => {
             {filteredLeaderboard
               .filter(user => user.league === "Silver League")
               .map((user) => (
-                <Card key={user.id} className="p-4 hover:shadow-lg transition-all">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-2 w-12">
+                <Card key={user.id} className="p-3 hover:shadow-lg transition-all">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 min-w-0 flex-1">
+                      <div className="flex items-center gap-1 w-8 flex-shrink-0">
                         {getRankIcon(user.rank)}
-                        <span className="text-2xl font-bold text-muted-foreground">
+                        <span className="text-sm font-bold text-muted-foreground">
                           #{user.rank}
                         </span>
                       </div>
 
-                      <Avatar className="w-12 h-12">
+                      <Avatar className="w-8 h-8 flex-shrink-0">
                         <AvatarImage src={user.avatar} />
                         <AvatarFallback>{user.username[0]}</AvatarFallback>
                       </Avatar>
 
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-lg">{user.username}</h3>
-                        <div className="flex items-center gap-3 text-sm">
-                          <Badge variant="secondary">{user.league}</Badge>
-                          <div className="flex items-center gap-1">
-                            <Trophy className="w-3 h-3 text-primary" />
-                            <span className="text-muted-foreground">{user.impactScore}</span>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-xs truncate">{user.username}</h3>
+                        <div className="flex items-center gap-1.5 text-xs">
+                          <Badge variant="secondary" className="text-[8px] px-1 py-0 max-w-[60px] truncate">
+                            {user.league.replace(' League', '')}
+                          </Badge>
+                          <div className="flex items-center gap-0.5">
+                            <Trophy className="w-2.5 h-2.5 text-primary" />
+                            <span className="text-muted-foreground text-[9px]">{user.impactScore}</span>
                           </div>
-                          <div className="flex items-center gap-1">
-                            <Flame className="w-3 h-3 text-secondary" />
-                            <span className="text-muted-foreground">{user.growthScore}</span>
+                          <div className="flex items-center gap-0.5">
+                            <Flame className="w-2.5 h-2.5 text-secondary" />
+                            <span className="text-muted-foreground text-[9px]">{user.growthScore}</span>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                      <div className="text-right mr-4">
-                        <div className="flex items-center gap-1 text-sm">
-                          <Swords className="w-4 h-4 text-accent" />
-                          <span className="text-muted-foreground">{user.challengeWins} wins</span>
-                        </div>
-                        <div className="flex items-center gap-1 text-sm">
-                          <Shield className="w-4 h-4 text-success" />
-                          <span className="text-muted-foreground">{user.defenseWins} defenses</span>
-                        </div>
-                      </div>
-
+                    <div className="flex items-center gap-1 flex-shrink-0">
                       <Button
                         onClick={() => handleChallenge(user)}
-                        className="bg-gradient-to-r from-primary to-primary-glow"
+                        className="bg-gradient-to-r from-primary to-primary-glow text-[9px] h-6 px-1.5"
+                        size="sm"
                       >
-                        <Swords className="w-4 h-4 mr-2" />
-                        Challenge
+                        <Swords className="w-3 h-3" />
                       </Button>
                     </div>
                   </div>
