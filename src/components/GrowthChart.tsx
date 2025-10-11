@@ -60,7 +60,7 @@ const GrowthChart = ({ impactScore, growthScore }: GrowthChartProps) => {
           <TrendingUp className="w-6 h-6 text-primary" />
           Growth Analytics
         </h2>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex gap-2">
           {timeFrameButtons.map((btn) => (
             <Button
               key={btn.value}

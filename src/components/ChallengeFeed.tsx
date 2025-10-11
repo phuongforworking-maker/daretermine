@@ -20,6 +20,13 @@ interface Challenge {
   isJoined?: boolean;
 }
 
+// Import challenge images
+import yogaImage from "@/assets/challenge-yoga.jpg";
+import artImage from "@/assets/challenge-art.jpg";
+import walkingImage from "@/assets/challenge-walking.jpg";
+import meditationImage from "@/assets/challenge-meditation.jpg";
+import languageImage from "@/assets/challenge-language.jpg";
+
 // Sample challenges data
 const sampleChallenges: Challenge[] = [
   {
@@ -32,6 +39,7 @@ const sampleChallenges: Challenge[] = [
     participants: 15420,
     impactPoints: 150,
     growthPoints: 200,
+    image: yogaImage,
   },
   {
     id: "2", 
@@ -43,6 +51,7 @@ const sampleChallenges: Challenge[] = [
     participants: 3240,
     impactPoints: 500,
     growthPoints: 800,
+    image: artImage,
   },
   {
     id: "3",
@@ -54,6 +63,7 @@ const sampleChallenges: Challenge[] = [
     participants: 28750,
     impactPoints: 100,
     growthPoints: 120,
+    image: walkingImage,
   },
   {
     id: "4",
@@ -65,6 +75,7 @@ const sampleChallenges: Challenge[] = [
     participants: 45200,
     impactPoints: 50,
     growthPoints: 80,
+    image: meditationImage,
   },
   {
     id: "5",
@@ -76,6 +87,7 @@ const sampleChallenges: Challenge[] = [
     participants: 8900,
     impactPoints: 300,
     growthPoints: 450,
+    image: languageImage,
   }
 ];
 
