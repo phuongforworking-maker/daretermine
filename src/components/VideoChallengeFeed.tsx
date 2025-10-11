@@ -247,7 +247,7 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
       {/* Right Side Actions - Centered Column */}
-      <div className="absolute right-4 bottom-24 md:bottom-32 flex flex-col gap-4 items-center z-10">
+      <div className="absolute right-4 bottom-24 md:bottom-32 flex flex-col gap-4 items-center z-20">
         {/* User Avatar */}
         <div 
           className="cursor-pointer hover:scale-105 transition-transform"

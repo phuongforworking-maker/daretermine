@@ -156,7 +156,7 @@ const LeaderboardPage = () => {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate('/', { state: { defaultView: 'video' } })}
             className="mb-4"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />

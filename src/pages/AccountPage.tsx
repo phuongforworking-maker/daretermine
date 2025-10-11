@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Trophy, Flame, Award, Clock, Target, TrendingUp, ArrowLeft } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
+import GrowthChart from "@/components/GrowthChart";
 
 interface Badge {
   id: string;
@@ -185,6 +186,11 @@ const AccountPage = () => {
             </div>
           </div>
         </Card>
+
+        {/* Growth Chart */}
+        <div className="mb-8">
+          <GrowthChart impactScore={userStats.impactScore} growthScore={userStats.growthScore} />
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Active Challenges */}
