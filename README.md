@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome to Daretermine
 
 ## Project info
 
@@ -11,6 +11,7 @@
 
 This project is built with:
 
+- Lovable.dev
 - Vite
 - TypeScript
 - React
