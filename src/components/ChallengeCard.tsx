@@ -31,14 +31,15 @@ const difficultyColors = {
 
 const ChallengeCard = ({ challenge, onJoin }: ChallengeCardProps) => {
   return (
-    <Card className="w-full max-w-md mx-auto overflow-hidden hover:shadow-lg transition-all duration-300 border-border/50">
+    <Card className="w-full max-w-md mx-auto overflow-hidden hover:scale-[1.02] hover:glow-blue transition-all duration-300 border-primary/30">
       {challenge.image && (
-        <div className="h-48 bg-gradient-to-br from-primary/20 to-secondary/20 relative overflow-hidden">
+        <div className="h-48 bg-gradient-to-br from-primary/30 to-secondary/30 relative overflow-hidden">
           <img 
             src={challenge.image} 
             alt={challenge.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-80"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
           <div className="absolute top-3 right-3">
             <Badge className={difficultyColors[challenge.difficulty]}>
               {challenge.difficulty}
@@ -87,7 +88,8 @@ const ChallengeCard = ({ challenge, onJoin }: ChallengeCardProps) => {
         
         <Button 
           onClick={() => onJoin?.(challenge.id)}
-          className="w-full bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+          variant="glow"
+          className="w-full font-semibold"
           disabled={challenge.isJoined}
         >
           {challenge.isJoined ? (

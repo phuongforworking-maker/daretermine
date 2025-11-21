@@ -21,7 +21,7 @@ const BottomNav = () => {
   };
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-black border-t border-primary/20 z-50">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 glass-card border-t border-primary/30 z-50 backdrop-blur-xl">
       <nav className="flex items-center justify-around h-10 px-1">
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -31,10 +31,10 @@ const BottomNav = () => {
             <button
               key={item.label}
               onClick={() => navigate(item.path, { state: item.state })}
-              className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
+              className={`flex flex-col items-center justify-center flex-1 h-full transition-all duration-300 ${
                 active
-                  ? "text-primary"
-                  : "text-white/50 hover:text-white/70"
+                  ? "text-primary drop-shadow-[0_0_8px_hsl(220_100%_60%/0.8)]"
+                  : "text-foreground/50 hover:text-foreground/70"
               }`}
             >
               <Icon className={`w-5 h-5 ${active ? "fill-current" : ""}`} />

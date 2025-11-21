@@ -63,7 +63,7 @@ const Index = () => {
     return <div className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20 animate-pulse" style={{ animationDuration: '8s' }} />
           <div className="container mx-auto px-4 py-20 relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8">
@@ -78,11 +78,11 @@ const Index = () => {
                 </div>
                 
                 <div className="flex items-center gap-4">
-                  <Button onClick={() => setViewMode("video")} size="lg" className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
+                  <Button onClick={() => setViewMode("video")} size="lg" variant="glow" className="text-lg font-semibold">
                     Start Your Journey
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
-                  <Button onClick={() => navigate("/auth")} variant="outline" size="lg">
+                  <Button onClick={() => navigate("/auth")} variant="outline" size="lg" className="text-lg">
                     Sign In
                   </Button>
                 </div>
@@ -105,8 +105,8 @@ const Index = () => {
               </div>
               
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-3xl" />
-                <img src={heroImage} alt="People doing productive activities" className="relative rounded-3xl shadow-2xl w-full" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-3xl blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+                <img src={heroImage} alt="People doing productive activities" className="relative rounded-3xl shadow-2xl w-full border border-primary/20" />
               </div>
             </div>
           </div>
@@ -125,9 +125,9 @@ const Index = () => {
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary/20 to-primary-glow/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Zap className="w-6 h-6 text-primary" />
+              <Card className="p-6 text-center hover:scale-105 hover:glow-blue transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary/30 to-primary-glow/30 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Zap className="w-6 h-6 text-primary drop-shadow-[0_0_8px_hsl(220_100%_60%/0.8)]" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Instant Engagement</h3>
                 <p className="text-muted-foreground">
@@ -135,9 +135,9 @@ const Index = () => {
                 </p>
               </Card>
               
-              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-secondary/20 to-secondary-light/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Target className="w-6 h-6 text-secondary" />
+              <Card className="p-6 text-center hover:scale-105 hover:glow-orange transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-secondary/30 to-secondary-light/30 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Target className="w-6 h-6 text-secondary drop-shadow-[0_0_8px_hsl(16_100%_60%/0.8)]" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Smart Scoring</h3>
                 <p className="text-muted-foreground">
@@ -145,9 +145,9 @@ const Index = () => {
                 </p>
               </Card>
               
-              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-success/20 to-success-light/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-6 h-6 text-success" />
+              <Card className="p-6 text-center hover:scale-105 hover:glow-cyan transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-success/30 to-success-light/30 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="w-6 h-6 text-success drop-shadow-[0_0_8px_hsl(180_100%_50%/0.8)]" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Real Progress</h3>
                 <p className="text-muted-foreground">
@@ -155,9 +155,9 @@ const Index = () => {
                 </p>
               </Card>
               
-              <Card className="p-6 text-center hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-accent/20 to-accent/30 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-6 h-6 text-accent" />
+              <Card className="p-6 text-center hover:scale-105 hover:glow-purple transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-accent/30 to-accent/40 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-6 h-6 text-accent drop-shadow-[0_0_8px_hsl(270_80%_60%/0.8)]" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Community Driven</h3>
                 <p className="text-muted-foreground">
@@ -171,14 +171,14 @@ const Index = () => {
         {/* CTA Section */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <Card className="p-12 text-center bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
+            <Card className="p-12 text-center bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/30 glow-blue">
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                 Ready to Transform Your Habits?
               </h2>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Join the movement of people choosing growth over passive consumption. Your future self will thank you.
               </p>
-              <Button onClick={() => setViewMode("video")} size="lg" className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
+              <Button onClick={() => setViewMode("video")} size="lg" variant="glow" className="text-lg font-semibold">
                 Start Your First Challenge
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -194,22 +194,22 @@ const Index = () => {
   return <div className="relative">
       {/* Desktop Top Navigation - Hidden on mobile */}
       <div className="hidden md:flex fixed top-4 left-4 z-20 gap-2">
-        <Button variant="outline" size="sm" onClick={() => navigate("/auth")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
+        <Button variant="outline" size="sm" onClick={() => navigate("/auth")} className="glass-card border-primary/30 hover:glow-blue">
           Sign In
         </Button>
-        <Button variant={viewMode === "video" ? "default" : "outline"} size="sm" onClick={() => setViewMode("video")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
+        <Button variant={viewMode === "video" ? "default" : "outline"} size="sm" onClick={() => setViewMode("video")} className={viewMode === "video" ? "glow-blue" : "glass-card border-primary/30 hover:glow-blue"}>
           <Play className="w-4 h-4 mr-1" />
           Video
         </Button>
-        <Button variant={viewMode === "grid" ? "default" : "outline"} size="sm" onClick={() => setViewMode("grid")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
+        <Button variant={viewMode === "grid" ? "default" : "outline"} size="sm" onClick={() => setViewMode("grid")} className={viewMode === "grid" ? "glow-blue" : "glass-card border-primary/30 hover:glow-blue"}>
           <Grid className="w-4 h-4 mr-1" />
           Grid
         </Button>
-        <Button variant="outline" size="sm" onClick={() => navigate("/account")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
+        <Button variant="outline" size="sm" onClick={() => navigate("/account")} className="glass-card border-primary/30 hover:glow-blue">
           <User className="w-4 h-4 mr-1" />
           Account
         </Button>
-        <Button variant="outline" size="sm" onClick={() => navigate("/leaderboard")} className="bg-black/30 backdrop-blur-sm border-white/20 text-white hover:bg-black/50">
+        <Button variant="outline" size="sm" onClick={() => navigate("/leaderboard")} className="glass-card border-primary/30 hover:glow-blue">
           <Trophy className="w-4 h-4 mr-1" />
           Leaderboard
         </Button>
