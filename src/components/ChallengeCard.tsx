@@ -37,7 +37,7 @@ const ChallengeCard = ({ challenge, onJoin }: ChallengeCardProps) => {
           <img 
             src={challenge.image} 
             alt={challenge.title}
-            className="w-full h-full object-cover opacity-80"
+            className="w-full h-full object-cover opacity-80 img-futuristic"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
           <div className="absolute top-3 right-3">

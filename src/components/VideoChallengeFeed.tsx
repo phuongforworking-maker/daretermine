@@ -236,10 +236,10 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
 
       {/* Video Background */}
       <div 
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center img-futuristic"
         style={{ 
           backgroundImage: `url(${currentChallenge.thumbnailUrl})`,
-          filter: 'brightness(0.7)'
+          filter: 'brightness(0.7) grayscale(0.3) contrast(1.2) saturate(1.5) hue-rotate(200deg)'
         }}
       />
 
@@ -253,8 +253,8 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
           className="cursor-pointer hover:scale-105 transition-transform"
           onClick={() => onUserProfile?.(currentChallenge.user.id)}
         >
-          <Avatar className="w-12 h-12 border-2 border-white">
-            <AvatarImage src={currentChallenge.user.avatar} />
+          <Avatar className="w-12 h-12 border-2 border-primary shadow-lg shadow-primary/50">
+            <AvatarImage src={currentChallenge.user.avatar} className="img-futuristic" />
             <AvatarFallback>{currentChallenge.user.username[0].toUpperCase()}</AvatarFallback>
           </Avatar>
         </div>
@@ -388,9 +388,9 @@ const VideoChallengeFeed = ({ onUserProfile }: VideoChallengeFeedProps) => {
         {currentChallenge.joinedUsers.length > 0 && (
           <div className="flex items-center gap-2 mb-3">
             <div className="flex -space-x-2">
-              {currentChallenge.joinedUsers.slice(0, 3).map((user) => (
-                <Avatar key={user.id} className="w-5 h-5 border-2 border-white">
-                  <AvatarImage src={user.avatar} />
+               {currentChallenge.joinedUsers.slice(0, 3).map((user) => (
+                <Avatar key={user.id} className="w-5 h-5 border-2 border-primary/50">
+                  <AvatarImage src={user.avatar} className="img-futuristic" />
                   <AvatarFallback className="text-[10px]">{user.username[0].toUpperCase()}</AvatarFallback>
                 </Avatar>
               ))}
