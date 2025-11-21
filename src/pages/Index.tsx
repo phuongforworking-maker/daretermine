@@ -10,14 +10,18 @@ import { Play, Grid, ArrowRight, Zap, Target, TrendingUp, Users, User, Trophy } 
 import LevelButton from "@/components/LevelButton";
 import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/hero-challenges.jpg";
-
 const Index = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [viewMode, setViewMode] = useState<"video" | "grid" | "landing">("landing");
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
-  const [userScores, setUserScores] = useState({ impact: 1240, growth: 890 });
+  const [userScores, setUserScores] = useState({
+    impact: 1240,
+    growth: 890
+  });
   const [hasSeenWelcomeBack, setHasSeenWelcomeBack] = useState(false);
 
   // Handle navigation from other pages
@@ -31,27 +35,23 @@ const Index = () => {
   useEffect(() => {
     const lastVisit = localStorage.getItem("lastVisit");
     const now = new Date().getTime();
-    
     if (lastVisit && !hasSeenWelcomeBack) {
       const timeDiff = now - parseInt(lastVisit);
       const hoursDiff = timeDiff / (1000 * 60 * 60);
-      
+
       // If more than 1 hour has passed, give welcome back bonus
       if (hoursDiff >= 1) {
         setUserScores(prev => ({
           impact: prev.impact + 1,
-          growth: prev.growth,
+          growth: prev.growth
         }));
-        
         toast({
           title: "Welcome back! 🎉",
-          description: "+1 Impact point for returning!",
+          description: "+1 Impact point for returning!"
         });
-        
         setHasSeenWelcomeBack(true);
       }
     }
-    
     localStorage.setItem("lastVisit", now.toString());
   }, [hasSeenWelcomeBack, toast]);
   const handleUserProfile = (userId: string) => {
@@ -63,12 +63,14 @@ const Index = () => {
     return <div className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20 animate-pulse" style={{ animationDuration: '8s' }} />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20 animate-pulse" style={{
+          animationDuration: '8s'
+        }} />
           <div className="container mx-auto px-4 py-20 relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8">
                 <div className="space-y-4">
-                  <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                  <h1 className="text-5xl font-bold leading-tight font-serif lg:text-7xl text-left">
                     Turn Scrolling Into{" "}
                     <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-7xl">
                       Growing
@@ -105,8 +107,10 @@ const Index = () => {
               </div>
               
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-3xl blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-                <img src={heroImage} alt="People doing productive activities" className="relative rounded-3xl shadow-2xl w-full border border-primary/20 img-futuristic" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-3xl blur-3xl animate-pulse" style={{
+                animationDuration: '4s'
+              }} />
+                
               </div>
             </div>
           </div>
@@ -216,11 +220,9 @@ const Index = () => {
       </div>
 
       {/* Level Button - Top Right - Only show in video mode */}
-      {viewMode === "video" && (
-        <div className="fixed top-4 right-4 z-20">
+      {viewMode === "video" && <div className="fixed top-4 right-4 z-20">
           <LevelButton impactScore={userScores.impact} growthScore={userScores.growth} compact={true} />
-        </div>
-      )}
+        </div>}
 
       {/* Content */}
       {viewMode === "video" ? <VideoChallengeFeed onUserProfile={handleUserProfile} /> : <ChallengeFeed />}
