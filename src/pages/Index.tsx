@@ -106,7 +106,7 @@ const Index = () => {
               
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-3xl blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-                <img src={heroImage} alt="People doing productive activities" className="relative rounded-3xl shadow-2xl w-full border border-primary/20" />
+                <img src={heroImage} alt="People doing productive activities" className="relative rounded-3xl shadow-2xl w-full border border-primary/20 img-futuristic" />
               </div>
             </div>
           </div>

@@ -193,6 +193,80 @@ All colors MUST be HSL.
   box-shadow: var(--glow-cyan);
 }
 
+/* Image filters for futuristic aesthetic */
+.img-futuristic {
+  filter: grayscale(0.3) contrast(1.2) brightness(0.9) saturate(1.5) hue-rotate(200deg);
+  transition: filter 0.3s ease;
+}
+
+.img-futuristic:hover {
+  filter: grayscale(0.2) contrast(1.3) brightness(1) saturate(1.6) hue-rotate(200deg);
+}
+
+.img-cyberpunk {
+  filter: grayscale(0.3) contrast(1.2) brightness(0.9) saturate(1.5) hue-rotate(200deg);
+}
+
+.img-neon {
+  filter: contrast(1.3) brightness(0.85) saturate(1.8) hue-rotate(240deg);
+}
+
+.img-duotone {
+  filter: grayscale(1) contrast(1.3) brightness(0.9);
+  background: linear-gradient(135deg, hsl(220 100% 60% / 0.3), hsl(16 100% 60% / 0.3));
+  background-blend-mode: multiply;
+}
+
+.img-vaporwave {
+  filter: contrast(1.2) saturate(1.6) hue-rotate(280deg) brightness(0.9);
+}
+
+/* Custom cursor styles */
+@keyframes cursor-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px 5px hsl(220 100% 60% / 0.6), 0 0 40px 10px hsl(220 100% 60% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px 8px hsl(220 100% 60% / 0.8), 0 0 60px 15px hsl(220 100% 60% / 0.4);
+  }
+}
+
+.custom-cursor {
+  cursor: none;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: hsl(220 100% 60%);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease-out;
+  box-shadow: 0 0 20px 5px hsl(220 100% 60% / 0.6), 0 0 40px 10px hsl(220 100% 60% / 0.3);
+}
+
+.cursor-outline {
+  width: 32px;
+  height: 32px;
+  border: 2px solid hsl(220 100% 60% / 0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.15s ease-out;
+  animation: cursor-glow 2s ease-in-out infinite;
+}
+
+.cursor-dot.clicking {
+  transform: scale(0.5);
+}
+
+.cursor-outline.clicking {
+  transform: scale(1.5);
+}
+
 /* Line clamp utility */
 .line-clamp-2 {
   overflow: hidden;

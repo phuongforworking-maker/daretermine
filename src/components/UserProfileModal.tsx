@@ -162,8 +162,8 @@ const UserProfileModal = ({ userId, isOpen, onClose }: UserProfileModalProps) =>
           <div className="flex items-start gap-6 p-6">
             {/* Avatar */}
             <div className="relative">
-              <Avatar className="w-24 h-24 border-4 border-primary/20">
-                <AvatarImage src={user.avatar} />
+              <Avatar className="w-24 h-24 border-4 border-primary/30 shadow-lg shadow-primary/30">
+                <AvatarImage src={user.avatar} className="img-futuristic" />
                 <AvatarFallback className="text-2xl">
                   {user.displayName[0].toUpperCase()}
                 </AvatarFallback>
