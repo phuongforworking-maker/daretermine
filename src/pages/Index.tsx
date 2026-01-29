@@ -180,7 +180,7 @@ const Index = () => {
                 Ready to Transform Your Habits?
               </h2>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Join the movement of people choosing growth over passive consumption. Your future self will thank you.
+                Join the movement of people choosing growth over passive consumption. Do what you enjoy most and have some fun competing against each others.                     
               </p>
               <Button onClick={() => setViewMode("video")} size="lg" variant="glow" className="text-lg font-semibold">
                 Start Your First Challenge
