@@ -76,7 +76,7 @@ const Index = () => {
                       Growing
                     </span>
                   </h1>
-                  <p className="text-xl text-muted-foreground leading-relaxed">Transform endless scrolling into meaningful action. Join thousands building better habits through challenges that matter. Track your progress with our dual-metric system: Self-Growth and Social Impact while earning Milestone Badges to celebrate your achievements.</p>
+                  <p className="text-xl text-muted-foreground leading-relaxed">Transform endless scrolling into meaningful action. Join thousands building better habits through challenges that matter. </p>
                 </div>
                 
                 <div className="flex items-center gap-4">
