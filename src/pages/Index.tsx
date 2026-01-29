@@ -72,7 +72,7 @@ const Index = () => {
                 <div className="space-y-4">
                   <h1 className="text-5xl font-bold leading-tight font-serif lg:text-7xl text-left">
                     Turn Scrolling Into{" "}
-                    <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-7xl">
+                    <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-7xl bg-primary">
                       Growing
                     </span>
                   </h1>
